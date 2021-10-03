@@ -5,7 +5,7 @@ import { render, screen } from '@testing-library/react';
 
 test('example presenter check', () => {
   const state: State = { tags: {left: true, right: false }};
-  const dispatch: Dispatch = (eventType, payload) => {}
+  const dispatch: Dispatch = (eventType, payload) => { throw new Error("Unimplemented!")}
 
   render(<ExamplePresenter state={state} dispatch={dispatch} />);
   const leftCheckbox = screen.getByTestId("left");

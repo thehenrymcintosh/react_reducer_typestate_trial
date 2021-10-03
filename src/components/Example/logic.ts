@@ -1,5 +1,4 @@
-import React from "react";
-import {useStateMachine, Handlers, Dispatcher} from "./useStateMachine";
+import {useStateMachine, Handlers, Dispatcher} from "../useStateMachine";
 
 export type State = {
   tags: Record<string,boolean>,
@@ -11,7 +10,6 @@ const initialState = {
     right: false,
   },
 }
-
 
 export type Events = {
   ToggleKey: { key: string, to: boolean },

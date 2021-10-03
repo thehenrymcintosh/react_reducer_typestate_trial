@@ -1,4 +1,3 @@
-import React from 'react';
 import { handlers, State, Events } from "./logic";
 
 test('example state machine test', () => {
