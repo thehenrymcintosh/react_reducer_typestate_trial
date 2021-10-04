@@ -1,9 +1,9 @@
 import React from "react";
-import {useLogic} from "./logic";
+import {State, Dispatch} from "./logic";
 
 export type Props = {
-  state: ReturnType<typeof useLogic>[0],
-  dispatch: ReturnType<typeof useLogic>[1],
+  state: State,
+  dispatch: Dispatch,
 }
 
 export const ExamplePresenter : React.FC<Props> = ({state, dispatch}) => {
