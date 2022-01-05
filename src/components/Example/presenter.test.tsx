@@ -1,13 +1,17 @@
 import React from 'react';
 import { ExamplePresenter } from "./presenter";
-import { State, Dispatch } from "./logic";
+import { ExampleState, ExampleEmitters } from "./logic";
 import { render, screen } from '@testing-library/react';
 
-test('example presenter check', () => {
-  const state: State = { tags: {left: true, right: false }};
-  const dispatch: Dispatch = (eventType, payload) => { throw new Error("Unimplemented!")}
+const voidEmitters : ExampleEmitters = {
+  ToggleKey: () => {}, 
+  SearchSubmit: () => {},
+}
 
-  render(<ExamplePresenter state={state} dispatch={dispatch} />);
+test('example presenter check', () => {
+  const state: ExampleState = { tags: {left: true, right: false }};
+
+  render(<ExamplePresenter state={state} emit={voidEmitters} />);
   const leftCheckbox = screen.getByTestId("left");
   const rightCheckbox = screen.getByTestId("right");
   expect(leftCheckbox).toBeChecked();

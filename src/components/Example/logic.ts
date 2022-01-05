@@ -1,38 +1,34 @@
-import {useStateMachine, Handlers as SMHandlers, Emitters as SMEmitters} from "../useStateMachine";
+import { Handlers, Emitters } from "../useEventReducer";
 
-export type State = {
+export type ExampleState = {
   tags: Record<string,boolean>,
 }
 
-const initialState = {
+export const initialState: ExampleState = {
   tags: {
     left: false,
     right: false,
   },
 }
 
-export type Events = {
+export type ExampleEvents = {
   ToggleKey: { key: string, to: boolean },
-  SearchSubmit: { foo: "bar" }
-  SelectedDate: Date,
+  SearchSubmit: { foo: "bar" },
 }
 
-export type Emitters = SMEmitters<Events>
-type Handlers = SMHandlers<State, Events>
+export type ExampleEmitters = Emitters<ExampleEvents>;
 
-const handleToggleKey : Handlers["ToggleKey"] = (state, payload, emitters) => {
+export type ExampleHandlers = Handlers<ExampleState, ExampleEvents>;
+
+
+const handleToggleKey : ExampleHandlers["ToggleKey"] = (state, payload, emitters) => {
   const newState = {...state};
   newState.tags[payload.key] = payload.to;
   return newState;
 }
 
-export const handlers: Handlers = {
+export const handlers: ExampleHandlers = {
   ToggleKey: handleToggleKey,
   SearchSubmit: (state, action) => state,
-  SelectedDate: (state, action) => state,
-}
-
-export const useLogic = () => {
-  return useStateMachine(handlers, initialState);
 }
 

@@ -15,7 +15,7 @@ export type Emitters<E> = {
   [K in keyof E] : Emitter<E[K]>;
 }
 
-export function useStateMachine<State, Events>(handlers: Handlers<State, Events>, initial: State): [State, Emitters<Events>] {
+export function useEventReducer<State, Events>(handlers: Handlers<State, Events>, initial: State): [State, Emitters<Events>] {
   type Event = keyof Events;
 
   const reducer: Reducer<State, Events> = useCallback((state, {eventType, payload, emitters}) => {

@@ -1,13 +1,19 @@
-import { handlers, State, Events } from "./logic";
+import { handlers, ExampleState, ExampleEvents, ExampleEmitters } from "./logic";
+
+const voidEmitters : ExampleEmitters = {
+  ToggleKey: () => {}, 
+  SearchSubmit: () => {},
+}
+
 
 test('example state machine test', () => {
-  const intialState: State = { tags: { left: false, right: false }};
-  const event : Events["ToggleKey"] = {
+  const intialState: ExampleState = { tags: { left: false, right: false }};
+  const event : ExampleEvents["ToggleKey"] = {
     key: "left",
     to: true,
   }
-  const expectedState: State = { tags: {left: true, right: false }};
-  expect(handlers.ToggleKey(intialState, event)).toEqual(expectedState)
+  const expectedState: ExampleState = { tags: {left: true, right: false }};
+  expect(handlers.ToggleKey(intialState, event, voidEmitters)).toEqual(expectedState)
 });
 
 
