@@ -3,14 +3,14 @@ import {useLogic} from "./logic";
 
 export type Props = {
   state: ReturnType<typeof useLogic>[0],
-  dispatch: ReturnType<typeof useLogic>[1],
+  emit: ReturnType<typeof useLogic>[1],
 }
 
-export const ExamplePresenter : React.FC<Props> = ({state, dispatch}) => {
+export const ExamplePresenter : React.FC<Props> = ({state, emit}) => {
 
   function onChange(key: string) {
     return function(e: React.ChangeEvent<HTMLInputElement>) {
-      dispatch("ToggleKey", {key, to: !state.tags[key]})
+      emit.ToggleKey({key, to: !state.tags[key]})
     }
   };
 

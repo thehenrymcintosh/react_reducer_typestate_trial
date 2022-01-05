@@ -3,7 +3,7 @@ import { useLogic } from "./logic";
 import { ExamplePresenter } from "./presenter";
 
 export const Example : React.FC<{}> = () => {
-  const [state, dispatch] = useLogic();
-  return <ExamplePresenter state={state} dispatch={dispatch} />
+  const [state, emit] = useLogic();
+  return <ExamplePresenter state={state} emit={emit} />
 }
 
